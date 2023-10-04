@@ -1,0 +1,147 @@
+## carte de test arduino mqtt ethernet relais
+switch:
+
+## carte 01 #################################################
+  - name: "Carte atmega #01/relay01"
+    state_topic: "atmega/RB/r1/r1"
+    command_topic: "atmega/RB/r1/r1"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+    
+  - name: "Carte atmega #01/relay02"
+    state_topic: "atmega/RB/r1/r2"
+    command_topic: "atmega/RB/r1/r2"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+
+  - name: "Carte atmega #01/relay03"
+    state_topic: "atmega/RB/r1/r3"
+    command_topic: "atmega/RB/r1/r3"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+    
+  - name: "Carte atmega #01/relay04"
+    state_topic: "atmega/RB/r1/r4"
+    command_topic: "atmega/RB/r1/r4"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+
+  - name: "Carte atmega #01/relay05"
+    state_topic: "atmega/RB/r1/r5"
+    command_topic: "atmega/RB/r1/r5"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+    
+  - name: "Carte atmega #01/relay06"
+    state_topic: "atmega/RB/r1/r6"
+    command_topic: "atmega/RB/r1/r6"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+
+  - name: "Carte atmega #01/relay07"
+    state_topic: "atmega/RB/r1/r7"
+    command_topic: "atmega/RB/r1/r7"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+    
+  - name: "Carte atmega #01/relay08"
+    state_topic: "atmega/RB/r1/r8"
+    command_topic: "atmega/RB/r1/r8"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+
+  - name: "Carte atmega #01/relay09"
+    state_topic: "atmega/RB/r1/r9"
+    command_topic: "atmega/RB/r1/r9"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+    
+  - name: "Carte atmega #01/relay10"
+    state_topic: "atmega/RB/r1/r10"
+    command_topic: "atmega/RB/r1/r10"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+
+  - name: "Carte atmega #01/relay11"
+    state_topic: "atmega/RB/r1/r11"
+    command_topic: "atmega/RB/r1/r11"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+    
+  - name: "Carte atmega #01/relay12"
+    state_topic: "atmega/RB/r1/r12"
+    command_topic: "atmega/RB/r1/r12"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+
+  - name: "Carte atmega #01/relay13"
+    state_topic: "atmega/RB/r1/r13"
+    command_topic: "atmega/RB/r1/r13"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+    
+  - name: "Carte atmega #01/relay14"
+    state_topic: "atmega/RB/r1/r14"
+    command_topic: "atmega/RB/r1/r14"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+
+  - name: "Carte atmega #01/relay15"
+    state_topic: "atmega/RB/r1/r15"
+    command_topic: "atmega/RB/r1/r15"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
+    
+  - name: "Carte atmega #01/relay16"
+    state_topic: "atmega/RB/r1/r16"
+    command_topic: "atmega/RB/r1/r16"
+    qos: 0
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    retain: true
