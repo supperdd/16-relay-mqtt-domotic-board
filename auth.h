@@ -1,3 +1,3 @@
-const char* serverHostname = "192.168.0.112";
-const String serverUsername = "dede"; // default
-const String serverPassword = "setec"; // default
+const char* serverHostname = "ip mqtt server";
+const String serverUsername = "user mqtt server"; // default
+const String serverPassword = "password mqtt server"; // default
