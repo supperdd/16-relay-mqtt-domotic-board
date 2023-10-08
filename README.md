@@ -5,6 +5,6 @@ c'est pas une inspiration c'est du pompage pur et dur avec quelques modifs insig
 carte domotique 16 sorties piloté par 16 entrées et/ou par mqtt ,compatible Home-Assistant Node-Red ou autres
 
 
-![Texte alternatif](Capture-20231004195541-507x921.png "https://github.com/supperdd/16-relay-mqtt-domotic-board/blob/main/")
+![Resultat possible dans Home-Assistant](Capture-20231004195541-507x921.png "https://github.com/supperdd/16-relay-mqtt-domotic-board/blob/main/")
 
-#![Texte alternatif](input board mk mk1.png "https://github.com/supperdd/16-relay-mqtt-domotic-board/blob/main/")
+![Carte relais mqtt](relay%20board%20mk2.png "https://github.com/supperdd/16-relay-mqtt-domotic-board/blob/main/")
