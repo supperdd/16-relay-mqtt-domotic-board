@@ -7,7 +7,7 @@ oui je sais il n y a pas de relais sur la carte relais ( ça serais plus une car
 
 
 ![Resultat possible dans Home-Assistant](Capture-20231004195541-507x921.png "https://github.com/supperdd/16-relay-mqtt-domotic-board/blob/main/")
-
+La carte eclectronique fait 10cm de coté ce qui fait que chez certain fabrican de pcb le prix est tres interessant! :-D
 ![Carte relais mqtt](relay%20board%20mk2.png "https://github.com/supperdd/16-relay-mqtt-domotic-board/blob/main/")
 
 ![Commande des relais depuis Node-Red](node-red%20relay.png "https://github.com/supperdd/16-relay-mqtt-domotic-board/blob/main/")
