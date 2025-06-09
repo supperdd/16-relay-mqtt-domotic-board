@@ -2,6 +2,7 @@ merci a dusnoki pour le code @https://github.com/dusnoki/arduino-mqtt-21-channel
 c'est pas une inspiration c'est du pompage pur et dur avec quelques modifs insignifiantes de ma part ;-)
 
 2025: un minimum de motivation et un maximum de chatGPT pour une nouvelle fournée 2025 - a tester !
+09/06/2025 apres quelques corrections les premiers test sont concluant , il faut voir sur le long terme !
 
 # 16-relay-mqtt-domotic-board
 carte domotique 16 sorties piloté par 16 entrées et/ou par mqtt ,compatible Home-Assistant Node-Red ou autres.
