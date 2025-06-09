@@ -41,7 +41,7 @@ void setup() {
         pinMode(sorties[i], OUTPUT);
         digitalWrite(sorties[i], LOW);  // relais éteints au démarrage
     }
-
+ 
     // Connexion au broker MQTT
     reconnectMQTT();
 }
