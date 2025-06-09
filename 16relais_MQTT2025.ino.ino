@@ -4,20 +4,21 @@
 #include "auth.h"  // Fichier contenant les identifiants MQTT
 
 // ====== Définition des broches ======
-const int nombreBoutons = 4;
-const int entrees[nombreBoutons] = {2, 3, 4, 5};
-const int sorties[nombreBoutons] = {22, 23, 24, 25};
+const int nombreBoutons = 16;
+const int entrees[nombreBoutons]  = {2, 3, 5, 6, 7, 8, 9, 38, 39, 40, 41, 42, 43, 44, 45, 46};
+const int sorties[nombreBoutons]  = {22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37};
 
 // ====== Configuration réseau ======
-byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-IPAddress ip(192, 168, 1, 100);
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0x14 };
+IPAddress ip(192, 168, 0, 14);
 
 // Initialisation Ethernet et MQTT
 EthernetClient ethClient;
 PubSubClient client(ethClient);
 
 // Mémorisation des états des relais
-bool etatSorties[nombreBoutons] = {LOW, LOW, LOW, LOW};
+bool etatSorties[nombreBoutons] = {LOW};
+bool ancienEtatBouton[nombreBoutons] = {HIGH};
 
 // Timer pour éviter de bloquer en cas de coupure MQTT
 unsigned long dernierEssaiMQTT = 0;
@@ -38,7 +39,7 @@ void setup() {
     for (int i = 0; i < nombreBoutons; i++) {
         pinMode(entrees[i], INPUT_PULLUP);
         pinMode(sorties[i], OUTPUT);
-        digitalWrite(sorties[i], LOW);
+        digitalWrite(sorties[i], LOW);  // relais éteints au démarrage
     }
 
     // Connexion au broker MQTT
@@ -56,27 +57,25 @@ void loop() {
         client.loop();  // Maintient la connexion MQTT active
     }
 
-    // Gestion des boutons et des relais en continu
+    // Gestion des boutons : bascule (toggle) à chaque impulsion
     for (int i = 0; i < nombreBoutons; i++) {
-        bool etatBouton = digitalRead(entrees[i]) == LOW;  // Bouton pressé
+        bool etatBouton = digitalRead(entrees[i]);
 
-        // Si le bouton est pressé, il prend le dessus sur MQTT
-        if (etatBouton && !etatSorties[i]) {
-            etatSorties[i] = HIGH;
-            digitalWrite(sorties[i], HIGH);
-            envoyerMQTT(i, HIGH);
-        } else if (!etatBouton && etatSorties[i]) {
-            etatSorties[i] = LOW;
-            digitalWrite(sorties[i], LOW);
-            envoyerMQTT(i, LOW);
+        // Détection front descendant (impulsion)
+        if (ancienEtatBouton[i] == HIGH && etatBouton == LOW) {
+            etatSorties[i] = !etatSorties[i];  // inversion
+            digitalWrite(sorties[i], etatSorties[i]);
+            envoyerMQTT(i, etatSorties[i]);
         }
+
+        ancienEtatBouton[i] = etatBouton;  // mise à jour
     }
 }
 
 // ====== Fonction pour envoyer un message MQTT ======
 void envoyerMQTT(int index, bool etat) {
     char topic[40];
-    sprintf(topic, "atmega/RB/r83/pub/r%d", index + 1);
+    sprintf(topic, "atmega/RB/r4/pub/r%d", index + 1);
     char message[10];
     sprintf(message, "%s", etat ? "ON" : "OFF");
 
@@ -103,9 +102,9 @@ void callbackMQTT(char* topic, byte* payload, unsigned int length) {
 
     for (int i = 0; i < nombreBoutons; i++) {
         char topicAttendu[40];
-        sprintf(topicAttendu, "atmega/RB/r83/sub/r%d", i + 1);
+        sprintf(topicAttendu, "atmega/RB/r4/sub/r%d", i + 1);
 
-        if (strcmp(topic, topicAttendu) == 0) {  // Si c'est un topic correspondant
+        if (strcmp(topic, topicAttendu) == 0) {
             if (strcmp(message, "ON") == 0) {
                 etatSorties[i] = HIGH;
                 digitalWrite(sorties[i], HIGH);
@@ -113,7 +112,7 @@ void callbackMQTT(char* topic, byte* payload, unsigned int length) {
                 etatSorties[i] = LOW;
                 digitalWrite(sorties[i], LOW);
             }
-            envoyerMQTT(i, etatSorties[i]);  // Publier le nouvel état
+            envoyerMQTT(i, etatSorties[i]);
         }
     }
 }
@@ -128,7 +127,7 @@ void reconnectMQTT() {
         // Réabonnement aux topics
         for (int i = 0; i < nombreBoutons; i++) {
             char topicSub[40];
-            sprintf(topicSub, "atmega/RB/r83/sub/r%d", i + 1);
+            sprintf(topicSub, "atmega/RB/r4/sub/r%d", i + 1);
             client.subscribe(topicSub);
             Serial.print("Abonné à : ");
             Serial.println(topicSub);
